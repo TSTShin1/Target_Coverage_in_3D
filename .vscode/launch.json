@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MainMPHSA",
+            "request": "launch",
+            "mainClass": "MainMPHSA",
+            "projectName": "DE_Sensor-main_9463dcd8"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "DataGenerator",
+            "request": "launch",
+            "mainClass": "DataGenerator",
+            "projectName": "DE_Sensor-main_9463dcd8"
+        },
+        {
+            "type": "java",
+            "name": "MainDE",
+            "request": "launch",
+            "mainClass": "MainDE",
+            "projectName": "DE_Sensor-main_9463dcd8"
+        },
+        {
+            "type": "java",
+            "name": "MainGA",
+            "request": "launch",
+            "mainClass": "MainGA",
+            "projectName": "DE_Sensor-main_9463dcd8"
+        },
+        {
+            "type": "java",
+            "name": "MainHMS",
+            "request": "launch",
+            "mainClass": "MainHMS",
+            "projectName": "DE_Sensor-main_9463dcd8"
+        }
+    ]
+}
