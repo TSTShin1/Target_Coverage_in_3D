@@ -5,7 +5,7 @@ import java.util.Random;
 public class DataGenerator {
 
     public static void main(String[] args) {
-        generateSensorData("C:\\Users\\Admin\\Desktop\\vscode_java\\DE_Sensor-main\\data\\sensor.input", 1000, 1, 500, 175, 200);
+        generateSensorData("C:\\Users\\Admin\\Desktop\\vscode_java\\DE_Sensor-main\\data\\sensor.input", 800, 1, 500, 175, 200);
         generateTargetData("C:\\Users\\Admin\\Desktop\\vscode_java\\DE_Sensor-main\\data\\sentarget.input", 50, 1, 500);
     }
 

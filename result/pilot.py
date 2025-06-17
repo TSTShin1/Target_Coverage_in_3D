@@ -65,20 +65,22 @@ generations_mphsar_filtered, values_mphsar_filtered = filter_every_nth_point(gen
 
 
 # Vẽ đồ thị liền mạch
-# plt.plot(generations_de_filtered, values_de_filtered, label='DE with $TH = 0.8$', marker='.', linestyle='-')
+# plt.plot(generations_de_filtered, values_de_filtered, label='DE with $P_r = 0.001$', marker='.', linestyle='-')
 plt.plot(generations_der_filtered, values_der_filtered, label='DE', marker='x', linestyle='-')
-# plt.plot(generations_ga_filtered, values_ga_filtered, label='GA with $TH = 0.8$', marker='.', linestyle='-')
+# plt.plot(generations_ga_filtered, values_ga_filtered, label='GA with $P_r = 0.001$', marker='.', linestyle='-')
 plt.plot(generations_gar_filtered, values_gar_filtered, label='GA', marker='.', linestyle='-')
-# plt.plot(generations_hms_filtered, values_hms_filtered, label='HMS with $TH = 0.8$', marker='.', linestyle='-')
+# plt.plot(generations_hms_filtered, values_hms_filtered, label='HMS with $P_r = 0.001$', marker='.', linestyle='-')
 plt.plot(generations_hmsr_filtered, values_hmsr_filtered, label='HMS', marker='v', linestyle='-')
-# plt.plot(generations_mphsa_filtered, values_mphsa_filtered, label='MPHSA with $TH = 0.8$', marker='.', linestyle='-')
+# plt.plot(generations_mphsa_filtered, values_mphsa_filtered, label='MPHSA with $P_r = 0.001$', marker='.', linestyle='-')
 plt.plot(generations_mphsar_filtered, values_mphsar_filtered, label='MPHSA', marker='o', linestyle='-')
 
 
-plt.title('Comparison of four algorithms DE, GA, HMS and MPHSA')
-plt.xlabel('Key time')
-plt.ylabel('Total time')
-plt.grid(True)
+plt.title('Comparison of three algorithms DE, GA, HMS and MPHSA', size=15)
+plt.xlabel('Key time', size=15)
+plt.ylabel('Total network lifetime', size=15)
+plt.grid(False)
+plt.tick_params(axis='both', labelsize=13)
+
 plt.legend(bbox_to_anchor=(1, 0.3), loc='right', borderaxespad=0)
 
 

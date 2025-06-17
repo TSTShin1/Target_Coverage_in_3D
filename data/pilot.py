@@ -1,16 +1,22 @@
+import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.datasets import make_blobs
 
-# Tạo ra các điểm dữ liệu (sensor)
-X, y = make_blobs(n_samples=300, centers=2, n_features=2, cluster_std=5, center_box=(0, 100), random_state=42)
+# Bộ dữ liệu
+data = np.array([3, 3, 4, 5, 6, 5, 4, 3, 5, 5])
 
-# Vẽ biểu đồ phân tán của các điểm dữ liệu
-plt.figure(figsize=(8, 8))
-plt.scatter(X[:, 0], X[:, 1], c=y, cmap='viridis', marker='o', s=50)
-plt.xlim(0, 100)
-plt.ylim(0, 100)
-plt.title('Sensor Distribution in 2D Space (100x100)')
-plt.xlabel('X-coordinate')
-plt.ylabel('Y-coordinate')
-plt.grid(True)
+# Tính giá trị trung bình và độ lệch chuẩn
+mean_value = np.mean(data)
+std_dev = np.std(data, ddof=1)  # ddof=1 để tính độ lệch chuẩn mẫu
+
+# Vẽ biểu đồ
+plt.figure(figsize=(6, 4))
+plt.bar(1, mean_value, yerr=std_dev, capsize=10, color='skyblue', alpha=0.7)
+
+# Định dạng biểu đồ
+plt.xticks([1], ["Mean"])
+plt.ylabel("Value")
+plt.title("Biểu đồ độ lệch chuẩn của bộ dữ liệu")
+plt.grid(axis='y', linestyle='--', alpha=0.6)
+
+# Hiển thị biểu đồ
 plt.show()

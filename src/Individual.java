@@ -110,7 +110,7 @@ public class Individual {
                 listPercent.set(j, 1 - (1 - listPercent.get(j))*(1 - listPercents.get(i).second.get(j)));
             }
             for (int j = 0; j < numTarget; j++) {
-                if (listPercent.get(j) >= 0.8) {
+                if (listPercent.get(j) >= 0.9) {
                     dem++;
                     if (dem == numTarget) {
                         dem = 0;
@@ -126,7 +126,11 @@ public class Individual {
                 }
             }
         }
-        return (k * numTarget + setTarget.size());
+        int cnt = 0;
+        for (int i = 0; i < listPercent.size(); i++) {
+            if (listPercent.get(i) >= 0.8) cnt++;
+        } 
+        return (k * numTarget + cnt);
     }
     
     public int getCovers() {

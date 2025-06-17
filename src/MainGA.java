@@ -56,11 +56,11 @@ public class MainGA {
                     if (distance <= sensor.getRadius()) {
                         coveredTargets.add(i);
                     }
-                    if (distance <= 100) {
+                    if (distance <= 125) {
                         coveredPercents.add(1.0);
                     }
                     else if (distance <= sensor.getRadius()) {
-                        coveredPercents.add(1/((Math.pow(distance/20, 1.5))*Math.pow(10, 0.2*a*(distance-20))));
+                        coveredPercents.add(1/((Math.pow(distance/125, 1.5))*Math.pow(10, 0.2*a*(distance-125))));
                     }
                     else coveredPercents.add(0.0);
                 }
@@ -93,12 +93,13 @@ public class MainGA {
             int time = 0;
             double crossoverRate = 0.8;
             double mutationRate = 0.2;
-            int populationSize = 200;
+            int populationSize = 100;
             int numTargets = targets.size();
             Individual newIndividual = new Individual(listTargets, listPercents, numTargets);
             int nTime = 0;
+            double energy = 0;
             System.out.println(newIndividual.getFitness());
-            while (newIndividual.getFitness() >= 20) {
+            while (newIndividual.getFitness() >= 40) {
                 nTime++;
                 int numOfSensor = listSensors.size();
                 // Khởi tạo quần thể
@@ -155,7 +156,7 @@ public class MainGA {
                     bench.write(String.format("%.3f\n", totalTime));
                     writeGeneration("C:\\Users\\Admin\\Desktop\\vscode_java\\DE_Sensor-main\\result\\genGA.out", generation, bestIndividual.getFitness());
                     best[generation] = bestIndividual.getFitness();
-                    if (generation >= 300) {
+                    if (generation >= 500) {
                         if (best[generation] == best[generation-100]) break;
                     }
                     generation++;
@@ -188,7 +189,7 @@ public class MainGA {
                     }
                     setSensor.add(maxFitness.getSensor(i));
                     for (int j = 0; j < numTargets; j++) {
-                        if (listPercents1.get(j) >= 0.8) {
+                        if (listPercents1.get(j) >= 0.9) {
                             cnt1++;
                             if (cnt1 == numTargets) {
                                 cnt1 = 0;
@@ -238,6 +239,7 @@ public class MainGA {
                 while (cover == 0) {
                     time++;
                     for (int i = 0; i < listCover.get(cnt).size(); i++) {
+                        if (listPowers.get(listCover.get(cnt).get(i)) - listPowersConsumption.get(listCover.get(cnt).get(i)) >= 0) energy += listPowersConsumption.get(listCover.get(cnt).get(i));
                         listPowers.set(listCover.get(cnt).get(i), listPowers.get(listCover.get(cnt).get(i)) - listPowersConsumption.get(listCover.get(cnt).get(i)));
                         if (listPowers.get(listCover.get(cnt).get(i)) < 0) {
                             cover++;
@@ -295,7 +297,6 @@ public class MainGA {
                 System.out.println(time);
                 writeGeneration("C:\\Users\\Admin\\Desktop\\vscode_java\\DE_Sensor-main\\result\\timeGA.out", nTime, time);
             }
-            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -360,7 +361,7 @@ public class MainGA {
         writer.write(String.join(" ", displayResult.stream().map(Object::toString).toArray(String[]::new)));
         writer.close();
     }
-    private static void writeGeneration(String fileName, int index, int maxFitness) throws IOException {
+    private static void writeGeneration(String fileName, int index, double maxFitness) throws IOException {
         FileWriter writer = new FileWriter(fileName, true);
         writer.write("Best fit for generation " + index + ": " + maxFitness + "\n");
         writer.close();
